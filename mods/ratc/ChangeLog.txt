@@ -1,4 +1,0 @@
-Structures:
-
-POWR: changed power from 100 to 200
-APWR: changed power from 200 to 500

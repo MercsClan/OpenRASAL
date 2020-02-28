@@ -574,7 +574,7 @@ flags: buttons.png
 	england: 60,127,30,15
 	
 	germany: 0,142,30,15
-	spain: 30,142,30,15
+	sea: 30,142,30,15
 	france: 60,142,30,15
 	
 	turkey: 0,157,30,15

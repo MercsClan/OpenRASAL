@@ -18,6 +18,7 @@ GAP.Sea:
 	RenderSprites:
 		Image: GAP  
 DOME.Sea:
+    #Radar Dome
     Inherits: DOME
 	Building:
         TerrainTypes: Water, Clear
@@ -28,7 +29,7 @@ DOME.Sea:
     RequiresBuildableArea:
 		AreaTypes: building
 		Adjacent: 8
-	#-SpawnActorsOnSell:
+	-SpawnActorsOnSell:
     RenderSprites:
 		Image: DOME
         
@@ -46,6 +47,7 @@ SILO.Sea:
     RenderSprites:
 		Image: SILO
 POWR.Sea:
+    #Basic Power Building
     Inherits: POWR
    	Building:
         TerrainTypes: Water, Clear
@@ -60,11 +62,12 @@ POWR.Sea:
     RequiresBuildableArea:
 		AreaTypes: building
 		Adjacent: 8
-	#-SpawnActorsOnSell:
+	-SpawnActorsOnSell:
     RenderSprites:
 		Image: POWR
         
 APWR.Sea:
+    #Advanced Power Building
 	Inherits: APWR
 	Building:
         TerrainTypes: Water, Clear
@@ -79,7 +82,7 @@ APWR.Sea:
     RequiresBuildableArea:
 		AreaTypes: building
 		Adjacent: 8
-	#-SpawnActorsOnSell:
+	-SpawnActorsOnSell:
     RenderSprites:
 		Image: APWR
         
@@ -101,6 +104,7 @@ SYRD.Sea:
 	RenderSprites:
 		Image: SYRD
 BARR.Sea:
+    #Builds Infantry Units
     Inherits: BARR
     Buildable:
 		Prerequisites: anypower, ~structures.sea, ~techlevel.infonly
@@ -109,7 +113,7 @@ BARR.Sea:
 		Image: BARR
         
 SEATEK:
-    #Tech Building
+    #Sea Tech Building
     Inherits:STEK
     Building:
         TerrainTypes: Water
@@ -121,7 +125,7 @@ SEATEK:
     RequiresBuildableArea:
 		AreaTypes: building
 		Adjacent: 8
-	#-SpawnActorsOnSell:
+	-SpawnActorsOnSell:
     RenderSprites:
 		Image: ATEK  
 HBOX.Sea:

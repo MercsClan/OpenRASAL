@@ -172,7 +172,12 @@
 		ValuePerUnit: 50
 		AllowedTerrainTypes: Clear,Road
 		AllowUnderActors: true
-
+    # ADD NEW FACTIONS HERE
+    Faction@7:
+		Name: Sea Farers
+		InternalName: sea
+		Side: Allies
+		Description: Sea Farers: Can build land structures on water.\nAll ships available with bonus strength.
 World:
 	Inherits: ^BaseWorld
 	ChatCommands:
@@ -216,11 +221,6 @@ World:
 		TechLevelDropdownDisplayOrder: 2
 		GameSpeedDropdownDisplayOrder: 3
 	CreateMPPlayers:
-	MPStartUnits@mcvonly:
-		Class: none
-		ClassName: MCV Only
-		Factions: allies, england, france, germany, soviet, russia, ukraine
-		BaseActor: mcv
 	MPStartUnits@lightallies:
 		Class: light
 		ClassName: Light Support
@@ -277,7 +277,13 @@ World:
 			3: WarningThreeMinutesRemaining
 			2: WarningTwoMinutesRemaining
 			1: WarningOneMinuteRemaining
-
+    # ADD NEW FACTIONS HERE
+    MPStartUnits@mcvonly:
+		Class: none
+		ClassName: MCV Only
+		Factions: allies, england, france, germany, soviet, russia, ukraine, sea
+		BaseActor: mcv
+        
 EditorWorld:
 	Inherits: ^BaseWorld
 	EditorActorLayer:

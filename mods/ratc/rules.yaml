@@ -1,0 +1,195 @@
+TSLA:
+	Armament:
+		Weapon: TeslaLaser
+
+# STRUCTURES        
+GAP.Sea:
+    Inherits: GAP
+    Building:
+        TerrainTypes: Water, Clear
+    Buildable:
+        Prerequisites: ~structures.sea, ~techlevel.high
+    Targetable:
+		TargetTypes: Ground, Water, Structure, WaterStructure, C4, DetonateAttack, SpyInfiltrate
+    RequiresBuildableArea:
+		AreaTypes: building
+		Adjacent: 8
+    #-SpawnActorsOnSell:
+	RenderSprites:
+		Image: GAP  
+DOME.Sea:
+    Inherits: DOME
+	Building:
+        TerrainTypes: Water, Clear
+    Buildable:
+        Prerequisites: ~structures.sea, proc, ~techlevel.medium
+    Targetable:
+		TargetTypes: Ground, Water, Structure, WaterStructure, C4, DetonateAttack, SpyInfiltrate
+    RequiresBuildableArea:
+		AreaTypes: building
+		Adjacent: 8
+	#-SpawnActorsOnSell:
+    RenderSprites:
+		Image: DOME
+        
+SILO.Sea:
+    Inherits: SILO
+	Building:
+        TerrainTypes: Water, Clear
+    Buildable:
+        Prerequisites: ~structures.sea, proc, ~techlevel.infonly
+    Targetable:
+		TargetTypes: Ground, Water, Structure, WaterStructure, C4, DetonateAttack, SpyInfiltrate
+    RequiresBuildableArea:
+		AreaTypes: building
+		Adjacent: 8
+    RenderSprites:
+		Image: SILO
+POWR.Sea:
+    Inherits: POWR
+   	Building:
+        TerrainTypes: Water, Clear
+    Tooltip:
+		Name: Power Plant
+    Buildable:
+		BuildPaletteOrder: 20
+		Description: Provides 200 power.\nCan be built on land or water.
+        Prerequisites: ~structures.sea, ~techlevel.infonly
+	Targetable:
+		TargetTypes: Ground, Water, Structure, WaterStructure, C4, DetonateAttack, SpyInfiltrate
+    RequiresBuildableArea:
+		AreaTypes: building
+		Adjacent: 8
+	#-SpawnActorsOnSell:
+    RenderSprites:
+		Image: POWR
+        
+APWR.Sea:
+	Inherits: APWR
+	Building:
+        TerrainTypes: Water, Clear
+    Tooltip:
+		Name: Advanced Power Plant
+    Buildable:
+		BuildPaletteOrder: 120
+		Description: Provides 500 power.\nCan be built on land or water.
+        Prerequisites: ~structures.sea, dome.sea, ~techlevel.medium
+	Targetable:
+		TargetTypes: Ground, Water, Structure, WaterStructure, C4, DetonateAttack, SpyInfiltrate
+    RequiresBuildableArea:
+		AreaTypes: building
+		Adjacent: 8
+	#-SpawnActorsOnSell:
+    RenderSprites:
+		Image: APWR
+        
+SPEN.Sea:
+    Inherits: SPEN
+    Buildable:
+        Prerequisites: anypower, ~structures.sea, ~techlevel.low
+    Health:
+		HP: 200000
+	RenderSprites:
+		Image: SPEN
+      
+SYRD.Sea:
+    Inherits: SYRD
+    Buildable:
+        Prerequisites: anypower, ~structures.sea, ~techlevel.low
+    Health:
+		HP: 200000
+	RenderSprites:
+		Image: SYRD
+BARR.Sea:
+    Inherits: BARR
+    Buildable:
+		Prerequisites: anypower, ~structures.sea, ~techlevel.infonly
+		Description: Trains infantry.
+    RenderSprites:
+		Image: BARR
+        
+SEATEK:
+    #Tech Building
+    Inherits:STEK
+    Building:
+        TerrainTypes: Water
+    Buildable:
+		Queue: Building
+		BuildPaletteOrder: 150
+		Prerequisites: spen.sea, syrd.sea, dome.sea, ~structures.sea, ~techlevel.high
+		Description: Provides Sea Farers advanced technologies.\nMust be built on water.
+    RequiresBuildableArea:
+		AreaTypes: building
+		Adjacent: 8
+	#-SpawnActorsOnSell:
+    RenderSprites:
+		Image: ATEK  
+HBOX.Sea:
+    #Camo PillBox
+    Inherits: HBOX
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 10
+		Prerequisites: barr.sea, ~structures.sea, ~techlevel.low
+		Description: Camouflaged static defense with a fireport\nfor a garrisoned soldier.\nCan detect cloaked units.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
+	Valued:
+		Cost: 400
+	CustomSellValue:
+		Value: 250    
+    RenderSprites:
+		Image: HBOX
+# SHIPS
+SS.Sea:
+    #Submarine
+    Inherits: SS
+	Buildable:
+		Queue: Ship
+		BuildAtProductionType: Submarine
+		BuildPaletteOrder: 30
+		Prerequisites: ~spen.sea, ~techlevel.low
+		Description: Submerged anti-ship unit\narmed with torpedoes.\nCan detect other submarines.\n  Strong vs Naval units\n  Weak vs Ground units, Aircraft
+	Valued:
+		Cost: 750
+	Health:
+		HP: 31250
+    Mobile:
+		TurnSpeed: 6
+		Speed: 89
+    Cloak:
+		CloakTypes: Underwater
+		InitialDelay: 0
+		CloakDelay: 40
+		CloakSound: subshow1.aud
+		UncloakSound: subshow1.aud
+		CloakedCondition: underwater
+		Palette: submerged
+		PauseOnCondition: cloak-force-disabled
+    RenderSprites:
+		Image: SS    
+MSUB.Sea:
+    #Missile Submarine
+    Inherits:MSUB
+    Buildable:
+		Queue: Ship
+		BuildAtProductionType: Submarine
+		BuildPaletteOrder: 60
+		Prerequisites: ~spen.sea, seatek, ~techlevel.high
+		Description: Submerged anti-ground siege unit\nwith anti-air capabilities.\nCan detect other submarines.\n  Strong vs Buildings, Ground units, Aircraft\n  Weak vs Naval units
+    Valued:
+		Cost: 1750
+	Health:
+		HP: 50000
+	Mobile:
+		TurnSpeed: 4
+		Speed: 51
+	Cloak:
+		CloakTypes: Underwater
+		InitialDelay: 0
+		CloakDelay: 75
+		CloakSound: subshow1.aud
+		UncloakSound: subshow1.aud
+		CloakedCondition: underwater
+		Palette: submerged
+		PauseOnCondition: cloak-force-disabled   
+    RenderSprites:
+		Image: MSUB        

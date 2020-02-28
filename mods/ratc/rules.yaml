@@ -137,9 +137,31 @@ SEATEK:
     RequiresBuildableArea:
 		AreaTypes: building
 		Adjacent: 8
-	-SpawnActorsOnSell:
+	AirstrikePower@spyplane:
+		OrderName: SovietSpyPlane
+		Prerequisites: aircraft.soviet
+		Icon: spyplane
+		ChargeInterval: 3750
+		Description: Spy Plane
+		LongDesc: Reveals an area of the map.
+		SelectTargetSpeechNotification: SelectTarget
+		EndChargeSpeechNotification: SpyPlaneReady
+		CameraActor: camera.spyplane
+		CameraRemoveDelay: 150
+		UnitType: u2
+		QuantizedFacings: 8
+		DisplayBeacon: true
+		BeaconPoster: camicon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+		UseDirectionalTarget: True
+		DirectionArrowAnimation: paradirection
+		SupportPowerPaletteOrder: 10
+    -SpawnActorsOnSell:
     RenderSprites:
 		Image: ATEK  
+
 HBOX.Sea:
     #Camo PillBox
     Inherits: HBOX
@@ -154,6 +176,7 @@ HBOX.Sea:
 		Value: 250    
     RenderSprites:
 		Image: HBOX
+        
 GUN.Sea:
     Inherits: GUN
     Building:
@@ -232,3 +255,68 @@ MSUB.Sea:
 		PauseOnCondition: cloak-force-disabled   
     RenderSprites:
 		Image: MSUB        
+        
+DD.Sea:
+    #Naval Ship
+    Inherits: DD
+    Buildable:
+		Queue: Ship
+		BuildAtProductionType: Boat
+		BuildPaletteOrder: 40
+		Prerequisites: ~syrd.sea, dome.sea, ~techlevel.medium
+		Description: Fast multi-role ship.\nCan detect submarines.\n  Strong vs Naval units, Vehicles, Aircraft\n  Weak vs Infantry
+    Valued:
+		Cost: 750
+    Health:
+		HP: 50000
+    RenderSprites:
+		Image: DD
+
+CA.Sea:
+    #Missile Ship
+    Inherits: CA
+	Buildable:
+		Queue: Ship
+		BuildAtProductionType: Boat
+		BuildPaletteOrder: 50
+		Prerequisites: ~syrd.sea, seatek, ~techlevel.high
+		Description: Very slow long-range ship.\n  Strong vs Buildings, Ground units\n  Weak vs Naval units, Aircraft
+    Valued:
+		Cost: 2000
+	Health:
+		HP: 100000   
+    RenderSprites:
+		Image: DD
+
+RADAR.Sea:
+    #Radar Ship
+    Inherits: ^Ship
+    Buildable:
+		Queue: Ship
+		BuildAtProductionType: Boat
+		BuildPaletteOrder: 110
+		Prerequisites: ~syrd.sea, dome.sea, ~techlevel.medium
+		Description: Long View Ship.\nCan detect submarines.\n  No Weapons
+    Valued:
+		Cost: 500
+    Tooltip:
+		Name: Radar Ship
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
+    Health:
+		HP: 25000
+    Armor: 
+        Type: Light
+    Mobile:
+        TurnSpeed: 15
+        Speed: 115
+	RevealsShroud:
+		MinRange: 10c0
+		Range: 12c0
+		RevealGeneratedShroud: False
+    RevealsShroud@GAPGEN:
+		Range: 10c0
+    DetectCloaked:
+		Range: 8c0    
+    RenderSprites:
+		Image: DD

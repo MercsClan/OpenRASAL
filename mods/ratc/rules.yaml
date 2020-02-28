@@ -16,7 +16,12 @@ GAP.Sea:
 		Adjacent: 8
     #-SpawnActorsOnSell:
 	RenderSprites:
-		Image: GAP  
+		Image: GAP
+        
+DOME:
+    Buildable:
+		Prerequisites: proc, ~techlevel.infonly, ~structures.soviet, ~structures.england, ~structures.france
+
 DOME.Sea:
     #Radar Dome
     Inherits: DOME
@@ -33,6 +38,10 @@ DOME.Sea:
     RenderSprites:
 		Image: DOME
         
+SILO:
+    Buildable:
+		Prerequisites: proc, ~techlevel.infonly, ~structures.soviet, ~structures.england, ~structures.france
+
 SILO.Sea:
     Inherits: SILO
 	Building:
@@ -46,6 +55,11 @@ SILO.Sea:
 		Adjacent: 8
     RenderSprites:
 		Image: SILO
+        
+POWR:
+    Buildable:
+		Prerequisites: proc, ~techlevel.infonly, ~structures.soviet, ~structures.england, ~structures.france
+
 POWR.Sea:
     #Basic Power Building
     Inherits: POWR
@@ -65,7 +79,11 @@ POWR.Sea:
 	-SpawnActorsOnSell:
     RenderSprites:
 		Image: POWR
-        
+    
+APWR:
+    Buildable:
+		Prerequisites: proc, ~techlevel.infonly, ~structures.soviet, ~structures.england, ~structures.france
+    
 APWR.Sea:
     #Advanced Power Building
 	Inherits: APWR
@@ -137,9 +155,10 @@ SEATEK:
     RequiresBuildableArea:
 		AreaTypes: building
 		Adjacent: 8
+	SupportPowerChargeBar:
 	AirstrikePower@spyplane:
 		OrderName: SovietSpyPlane
-		Prerequisites: aircraft.soviet
+		Prerequisites: dome.sea
 		Icon: spyplane
 		ChargeInterval: 3750
 		Description: Spy Plane
@@ -267,6 +286,8 @@ DD.Sea:
 		Description: Fast multi-role ship.\nCan detect submarines.\n  Strong vs Naval units, Vehicles, Aircraft\n  Weak vs Infantry
     Valued:
 		Cost: 750
+    Tooltip:
+		Name: Naval Combat Ship
     Health:
 		HP: 50000
     RenderSprites:
@@ -283,10 +304,12 @@ CA.Sea:
 		Description: Very slow long-range ship.\n  Strong vs Buildings, Ground units\n  Weak vs Naval units, Aircraft
     Valued:
 		Cost: 2000
+    Tooltip:
+		Name: Missle Cruiser
 	Health:
 		HP: 100000   
     RenderSprites:
-		Image: DD
+		Image: CA
 
 RADAR.Sea:
     #Radar Ship
@@ -311,8 +334,8 @@ RADAR.Sea:
         TurnSpeed: 15
         Speed: 115
 	RevealsShroud:
-		MinRange: 10c0
-		Range: 12c0
+		MinRange: 20c0
+		Range: 25c0
 		RevealGeneratedShroud: False
     RevealsShroud@GAPGEN:
 		Range: 10c0

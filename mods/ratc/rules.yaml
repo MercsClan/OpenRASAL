@@ -92,16 +92,26 @@ SPEN.Sea:
         Prerequisites: anypower, ~structures.sea, ~techlevel.low
     Health:
 		HP: 200000
+    RepairsUnits:
+		HpPerStep: 2000
+		StartRepairingNotification: Repairing
+		FinishRepairingNotification: UnitRepaired
+		PlayerExperience: 15
 	RenderSprites:
 		Image: SPEN
-      
+
 SYRD.Sea:
     Inherits: SYRD
     Buildable:
         Prerequisites: anypower, ~structures.sea, ~techlevel.low
     Health:
 		HP: 200000
-	RenderSprites:
+	RepairsUnits:
+		HpPerStep: 2000
+		StartRepairingNotification: Repairing
+		FinishRepairingNotification: UnitRepaired
+		PlayerExperience: 15
+    RenderSprites:
 		Image: SYRD
 BARR.Sea:
     #Builds Infantry Units
@@ -117,6 +127,8 @@ SEATEK:
     Inherits:STEK
     Building:
         TerrainTypes: Water
+    Tooltip:
+		Name: Sea Farers Tech Center
     Buildable:
 		Queue: Building
 		BuildPaletteOrder: 150
@@ -133,7 +145,7 @@ HBOX.Sea:
     Inherits: HBOX
 	Buildable:
 		Queue: Defense
-		BuildPaletteOrder: 10
+		BuildPaletteOrder: 60
 		Prerequisites: barr.sea, ~structures.sea, ~techlevel.low
 		Description: Camouflaged static defense with a fireport\nfor a garrisoned soldier.\nCan detect cloaked units.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
 	Valued:
@@ -142,6 +154,29 @@ HBOX.Sea:
 		Value: 250    
     RenderSprites:
 		Image: HBOX
+GUN.Sea:
+    Inherits: GUN
+    Building:
+        TerrainTypes: Water, Clear
+    Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 70
+		Prerequisites: barr.sea, ~structures.sea, ~techlevel.medium
+		Description: Anti-Armor base defense.\nCan detect cloaked units and be built on water.\n  Strong vs Vehicles\n  Weak vs Infantry, Aircraft
+    RenderSprites:
+		Image: GUN
+SAM.Sea:
+    Inherits: SAM
+    Building:
+        TerrainTypes: Water, Clear
+    Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 100
+		Prerequisites: dome.sea, ~structures.sea, ~techlevel.medium
+		Description: Anti-Air base defense.\nCan be built on land or sea.\n  Strong vs Aircraft\n  Weak vs Ground units
+    RenderSprites:
+		Image: SAM
+        
 # SHIPS
 SS.Sea:
     #Submarine
